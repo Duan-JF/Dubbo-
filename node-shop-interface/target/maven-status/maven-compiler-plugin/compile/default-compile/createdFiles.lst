@@ -1,0 +1,4 @@
+org\example\domain\Address.class
+org\example\service\UserInfoService.class
+org\example\domain\Order.class
+org\example\service\OrderServices.class

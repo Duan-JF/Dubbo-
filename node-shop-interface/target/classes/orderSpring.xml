@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--声明dubbo的服务名称
+        name:dubbo的服务名称 可以自定义，一般使用服务的项目名称
+        服务的名称最好是唯一值，dubbo框架内部用来区分服务的
+    -->
+    <dubbo:application name="link-orderservice-provider"/>
+
+<!--    声明访问dubbo服务的协议名称-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!--声明服务的接口
+        interface:接口的全限定名称
+        ref：接口实现类对象的id
+        registry:表示是否使用注册中心
+                 第一个项目是直连方式，不使用注册中心，所以赋值为：”N/A“
+    -->
+    <dubbo:service interface="org.example.service.OrderServices" ref="orderServices" registry="N/A"/>
+    <!--声明接口的实现类对象-->
+    <bean id="orderServices" class="org.example.service.OrderServicesImpl"/>
+
+</beans>
